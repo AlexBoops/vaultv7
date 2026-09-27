@@ -18,7 +18,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
       
-      <!-- Files live directly in root according to your repo tree -->
+      <!-- CSS Stylesheet -->
       <link rel="stylesheet" href="index.css">
       <script src="https://cdn.tailwindcss.com"></script>
       
@@ -129,7 +129,7 @@
     <i></i>
    </div>
   
-      <!-- Scripts mapped to the root directory layout -->
+      <!-- Scripts mapped accurately to root and uv/ folder layout -->
       <script src="uv/uv.bundle.js" charset="UTF-8" defer></script>
       <script src="uv/uv.config.js" charset="UTF-8" defer></script>
       <script src="register-sw.js" charset="UTF-8" defer></script>
@@ -140,7 +140,7 @@
       <script>
         function registerServiceWorker() {
           "use strict";
-          const stockSW = "uv-sw.js";
+          const stockSW = "uv/uv-sw.js";
           if (!navigator.serviceWorker || location.protocol !== "https:") return;
 
           navigator.serviceWorker.register(stockSW, {
