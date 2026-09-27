@@ -1,8 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <!-- Base Path locked to /vaultv7/ so all relative scripts, styles, and links resolve correctly -->
+      <!-- Base Path locked to /vaultv7/ -->
       <base href="/vaultv7/">
+
+      <!-- Path Interceptor Script: Fixes hardcoded absolute root paths in imported scripts like register-sw.js -->
+      <script>
+        (function() {
+          const REPO_PREFIX = "/vaultv7";
+          // Intercept fetch and XHR to fix absolute root requests
+          const origFetch = window.fetch;
+          window.fetch = function(url, options) {
+            if (typeof url === 'string' && url.startsWith('/') && !url.startsWith(REPO_PREFIX)) {
+              url = REPO_PREFIX + url;
+            }
+            return origFetch.call(this, url, options);
+          };
+        })();
+      </script>
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -193,7 +208,8 @@ class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white ho
       <script>
         function registerServiceWorker() {
           "use strict";
-          const stockSW = "uv-sw.js";
+          // Explicitly prefix with /vaultv7/ to resolve the 404 on /uv-sw.js
+          const stockSW = "/vaultv7/uv-sw.js";
           const swAllowedHostnames = ["localhost", "127.0.0.1"];
   
           async function registerSW() {
