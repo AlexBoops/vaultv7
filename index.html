@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
+      <!-- Base Path: Anchors all relative requests to /vaultv7/ -->
+      <base href="/vaultv7/">
+
       <!-- Font Awesome Icons -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
       
-      <!-- Clean relative paths (No leading slashes) -->
+      <!-- Root-level index.css (NO leading slash) -->
       <link rel="stylesheet" href="index.css">
       
       <script src="https://cdn.tailwindcss.com"></script>
@@ -73,11 +76,11 @@
    </head>
    <body class="bg-black overflow-hidden" onload="registerServiceWorker()">
 
-<div id="loading-screen" class="fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center text-white">
-    <div class="w-48 h-48 border-[20px] border-white border-t-transparent rounded-full animate-spin mb-6"></div>
-    <p class="text-4xl font-semibold tracking-wide">Loading AJH’s Vault...</p>
-  </div>
-  <script>
+   <div id="loading-screen" class="fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center text-white">
+       <div class="w-48 h-48 border-[20px] border-white border-t-transparent rounded-full animate-spin mb-6"></div>
+       <p class="text-4xl font-semibold tracking-wide">Loading AJH’s Vault...</p>
+   </div>
+   <script>
     window.addEventListener("load", () => {
       const loader = document.getElementById("loading-screen");
       if (loader) {
@@ -88,14 +91,14 @@
         }, 500);
       }
     });
-  </script>
+   </script>
   
       <canvas id="canvas"></canvas>
       <div class="text-white min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
       <div class="container text-center max-w-md relative">
          <div class="flex items-center justify-center space-x-4">
-             <!-- Clean relative path for home logo -->
-             <a href="./index.html" id="logo" class="text-5xl font-bold opacity-0 animate-de-entrance bg-clip-text text-transparent bg-gradient-to-r from-gray-300 to-white hover:opacity-80 transition-opacity">
+             <!-- Home link resolves to /vaultv7/ via base -->
+             <a href="./" id="logo" class="text-5xl font-bold opacity-0 animate-de-entrance bg-clip-text text-transparent bg-gradient-to-r from-gray-300 to-white hover:opacity-80 transition-opacity">
                  Vault v6.5
              </a>
          </div>
@@ -111,7 +114,7 @@
                       required
                       class="w-full px-4 py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white placeholder-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:bg-black/50 transition-all duration-250"
                   />
-              </form>
+                </form>
                 
                 <a href="g/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
                     <i class="fa-solid fa-gamepad"></i> Games
@@ -159,6 +162,7 @@
             </div>
       </div>
    </div>
+
    <div class="fixed bottom-0 p-4 text-neutral-500">
       <a class="underline" href="https://discord.gg/RxDCZz7E5R" target="_blank" rel="noopener noreferrer">discord.gg/RxDCZz7E5R</a>
       <a class="ml-10 underline" href="privacy-policy/">Privacy policy</a>
@@ -170,9 +174,9 @@
     <i></i>
     <i></i>
     <i></i>
-  </div>
+   </div>
   
-      <!-- Clean relative script URLs -->
+      <!-- Scripts mapped directly to your root and uv/ layout without leading slashes -->
       <script src="uv/uv.bundle.js" charset="UTF-8" defer></script>
       <script src="uv/uv.config.js" charset="UTF-8" defer></script>
       <script src="register-sw.js" charset="UTF-8" defer></script>
@@ -195,10 +199,8 @@
             if (!navigator.serviceWorker) return;
   
             try {
-              // Dynamically find current subfolder path so the service worker scope works everywhere
-              const basePath = window.location.pathname.includes('/vaultv7/') ? '/vaultv7/service/' : '/service/';
               await navigator.serviceWorker.register(stockSW, {
-                scope: basePath,
+                scope: "/vaultv7/service/",
               });
             } catch (e) {
               console.warn("Service worker registration failed:", e);
