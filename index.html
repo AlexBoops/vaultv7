@@ -1,26 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <!-- Base Path locked to /vaultv7/ -->
-      <base href="/vaultv7/">
-
-      <!-- Path Interceptor Script: Fixes hardcoded absolute root paths in imported scripts like register-sw.js -->
-      <script>
-        (function() {
-          const REPO_PREFIX = "/vaultv7";
-          // Intercept fetch and XHR to fix absolute root requests
-          const origFetch = window.fetch;
-          window.fetch = function(url, options) {
-            if (typeof url === 'string' && url.startsWith('/') && !url.startsWith(REPO_PREFIX)) {
-              url = REPO_PREFIX + url;
-            }
-            return origFetch.call(this, url, options);
-          };
-        })();
-      </script>
-
+      <!-- Font Awesome Icons -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+      
+      <!-- Clean relative paths (No leading slashes) -->
       <link rel="stylesheet" href="index.css">
       
       <script src="https://cdn.tailwindcss.com"></script>
@@ -109,7 +94,8 @@
       <div class="text-white min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
       <div class="container text-center max-w-md relative">
          <div class="flex items-center justify-center space-x-4">
-             <a href="./" id="logo" class="text-5xl font-bold opacity-0 animate-de-entrance bg-clip-text text-transparent bg-gradient-to-r from-gray-300 to-white hover:opacity-80 transition-opacity">
+             <!-- Clean relative path for home logo -->
+             <a href="./index.html" id="logo" class="text-5xl font-bold opacity-0 animate-de-entrance bg-clip-text text-transparent bg-gradient-to-r from-gray-300 to-white hover:opacity-80 transition-opacity">
                  Vault v6.5
              </a>
          </div>
@@ -127,63 +113,50 @@
                   />
               </form>
                 
-                <a 
-                    href="g/" 
-                    class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
-                ><i class="fa-solid fa-gamepad"></i> Games
+                <a href="g/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                    <i class="fa-solid fa-gamepad"></i> Games
                 </a>
             
-                <a 
-                    href="a/" 
-                    class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
-                ><i class="fa-brands fa-app-store-ios"></i> Apps 
+                <a href="a/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                    <i class="fa-brands fa-app-store-ios"></i> Apps 
                 </a>
 
-                <a 
-                href="education/" 
-                class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
-            ><i class="fa-solid fa-school"></i> Education
-            </a>
+                <a href="education/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                    <i class="fa-solid fa-school"></i> Education
+                </a>
         
-                <a 
-                href="t/" 
-                class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
-            ><i class="fa-solid fa-screwdriver-wrench"></i> Tools
-            </a>
-            <a 
-            href="https://docs.google.com/document/d/14LlAmWkhchNJ83BhM3KFEk4MLhu5HERqlwljGJs6fN4/view?usp=sharing" 
-            target="_blank"
-            rel="noopener noreferrer"
-            class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
-        ><i class="fa-solid fa-link"></i> Link Portal</a>
-        <a 
-        href="vm/" 
-        class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
-    ><i class="fa-solid fa-desktop"></i> VM (beta)
-    </a>
-    <a 
-href="ia/" 
-class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
-><i class="fa-solid fa-robot"></i> AI
-</a>
-<a 
-href="c/" 
-class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
-><i class="fa-solid fa-message"></i> Chatroom
-</a>
-<div class="flex items-center bg-red-900 border-t-4 border-red-700 col-span-2" role="alert">
-      <a class="text-xl" href="https://chng.it/s5StkhSqpJ" target="_blank" rel="noopener noreferrer">CLICK TO SIGN THE PETITION</a>
-  </div>
-</div>
+                <a href="t/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> Tools
+                </a>
+
+                <a href="https://docs.google.com/document/d/14LlAmWkhchNJ83BhM3KFEk4MLhu5HERqlwljGJs6fN4/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                    <i class="fa-solid fa-link"></i> Link Portal
+                </a>
+
+                <a href="vm/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                    <i class="fa-solid fa-desktop"></i> VM (beta)
+                </a>
+
+                <a href="ia/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                    <i class="fa-solid fa-robot"></i> AI
+                </a>
+
+                <a href="c/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                    <i class="fa-solid fa-message"></i> Chatroom
+                </a>
+
+                <div class="flex items-center bg-red-900 border-t-4 border-red-700 col-span-2" role="alert">
+                    <a class="text-xl" href="https://chng.it/s5StkhSqpJ" target="_blank" rel="noopener noreferrer">CLICK TO SIGN THE PETITION</a>
+                </div>
+              </div>
             </div>
 
-              <span class="text-neutral-400 text-sm quote-thing">
-              </span>
+            <span class="text-neutral-400 text-sm quote-thing"></span>
   
-              <div class="desc left-margin text-neutral-400">
-                  <p id="uv-error"></p>
-                  <pre id="uv-error-code"></pre>
-              </div>
+            <div class="desc left-margin text-neutral-400">
+                <p id="uv-error"></p>
+                <pre id="uv-error-code"></pre>
+            </div>
       </div>
    </div>
    <div class="fixed bottom-0 p-4 text-neutral-500">
@@ -199,6 +172,7 @@ class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white ho
     <i></i>
   </div>
   
+      <!-- Clean relative script URLs -->
       <script src="uv/uv.bundle.js" charset="UTF-8" defer></script>
       <script src="uv/uv.config.js" charset="UTF-8" defer></script>
       <script src="register-sw.js" charset="UTF-8" defer></script>
@@ -208,8 +182,7 @@ class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white ho
       <script>
         function registerServiceWorker() {
           "use strict";
-          // Explicitly prefix with /vaultv7/ to resolve the 404 on /uv-sw.js
-          const stockSW = "/vaultv7/uv-sw.js";
+          const stockSW = "uv-sw.js";
           const swAllowedHostnames = ["localhost", "127.0.0.1"];
   
           async function registerSW() {
@@ -222,8 +195,10 @@ class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white ho
             if (!navigator.serviceWorker) return;
   
             try {
+              // Dynamically find current subfolder path so the service worker scope works everywhere
+              const basePath = window.location.pathname.includes('/vaultv7/') ? '/vaultv7/service/' : '/service/';
               await navigator.serviceWorker.register(stockSW, {
-                scope: "/vaultv7/service/",
+                scope: basePath,
               });
             } catch (e) {
               console.warn("Service worker registration failed:", e);
