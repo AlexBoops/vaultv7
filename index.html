@@ -1,18 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <!-- Dynamic Base Path Injector -->
-      <script>
-        (function() {
-          const pathSegments = window.location.pathname.split('/').filter(Boolean);
-          const isGitHubPages = window.location.hostname.endsWith('.github.io') && pathSegments.length > 0;
-          window.SITE_BASE = isGitHubPages ? '/' + pathSegments[0] + '/' : '/';
-          
-          const base = document.createElement('base');
-          base.href = window.SITE_BASE;
-          document.head.prepend(base);
-        })();
-      </script>
+      <!-- Hardcoded Base Path ensures it ALWAYS points to /vaultv7/ -->
+      <base href="/vaultv7/">
 
       <!-- Font Awesome Icons -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -129,7 +119,7 @@
     <i></i>
    </div>
   
-      <!-- Scripts mapped accurately to root and uv/ folder layout -->
+      <!-- Scripts explicitly routed under /vaultv7/ -->
       <script src="uv/uv.bundle.js" charset="UTF-8" defer></script>
       <script src="uv/uv.config.js" charset="UTF-8" defer></script>
       <script src="register-sw.js" charset="UTF-8" defer></script>
@@ -144,7 +134,7 @@
           if (!navigator.serviceWorker || location.protocol !== "https:") return;
 
           navigator.serviceWorker.register(stockSW, {
-            scope: window.SITE_BASE + "service/"
+            scope: "/vaultv7/service/"
           }).catch(e => {
             console.warn("SW registration skipped:", e);
           });
