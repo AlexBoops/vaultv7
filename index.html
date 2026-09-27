@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <!-- 1. Enforce Trailing Slash on GitHub Pages -->
-      <script>
-        if (!location.pathname.endsWith('/') && !location.pathname.split('/').pop().includes('.')) {
-          location.replace(location.pathname + '/' + location.search + location.hash);
-        }
-      </script>
+      <!-- Enforce base path so GitHub Pages never drops /vaultv7/ -->
+      <base href="/vaultv7/">
 
       <!-- Font Awesome Icons -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
       
-      <!-- Relative CSS -->
-      <link rel="stylesheet" href="./index.css">
+      <!-- CSS inside static/ -->
+      <link rel="stylesheet" href="static/index.css">
       <script src="https://cdn.tailwindcss.com"></script>
       
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <title>AJH's Vault V6.5</title>
-      <link rel="icon" href="./icon.png" type="image/png">
+      <link rel="icon" href="static/icon.png" type="image/png">
    </head>
    <body class="bg-black" onload="registerServiceWorker()">
 
@@ -50,7 +46,6 @@
              </div>
          </div>
 
-              <!-- Button Grid with Proper GitHub Pages Subfolder Routing -->
               <div class="grid grid-cols-3 gap-2 mb-2 mt-4">
                 
                 <form id="uv-form" class="col-span-2">
@@ -65,25 +60,25 @@
                 </form>
                 
                 <a 
-                    href="./g/" 
+                    href="g/" 
                     class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
                 ><i class="fa-solid fa-gamepad"></i> Games
                 </a>
             
                 <a 
-                    href="./a/" 
+                    href="a/" 
                     class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
                 ><i class="fa-brands fa-app-store-ios"></i> Apps 
                 </a>
 
                 <a 
-                    href="./education/" 
+                    href="education/" 
                     class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
                 ><i class="fa-solid fa-school"></i> Education
                 </a>
         
                 <a 
-                    href="./t/" 
+                    href="t/" 
                     class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
                 ><i class="fa-solid fa-screwdriver-wrench"></i> Tools
                 </a>
@@ -97,19 +92,19 @@
                 </a>
                 
                 <a 
-                    href="./vm/" 
+                    href="vm/" 
                     class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
                 ><i class="fa-solid fa-desktop"></i> VM (beta)
                 </a>
                 
                 <a 
-                    href="./ia/" 
+                    href="ia/" 
                     class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
                 ><i class="fa-solid fa-robot"></i> AI
                 </a>
                 
                 <a 
-                    href="./c/" 
+                    href="c/" 
                     class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center"
                 ><i class="fa-solid fa-message"></i> Chatroom
                 </a>
@@ -131,9 +126,9 @@
 
    <div class="fixed bottom-0 p-4 text-neutral-500">
       <a class="underline" href="https://discord.gg/RxDCZz7E5R" target="_blank" rel="noopener noreferrer">discord.gg/RxDCZz7E5R</a>
-      <a class="ml-10 underline" href="./privacy-policy/">Privacy policy</a>
-      <a class="ml-10 underline" href="./contact/">Contact</a>
-      <a class="ml-10 underline" href="./partners/">Partners</a>
+      <a class="ml-10 underline" href="privacy-policy/">Privacy policy</a>
+      <a class="ml-10 underline" href="contact/">Contact</a>
+      <a class="ml-10 underline" href="partners/">Partners</a>
    </div>
 
    <div id="comets">
@@ -142,12 +137,26 @@
     <i></i>
    </div>
   
-      <!-- Scripts relative to /vaultv7/ -->
-      <script src="./uv/uv.bundle.js" charset="UTF-8" defer></script>
-      <script src="./uv/uv.config.js" charset="UTF-8" defer></script>
-      <script src="./register-sw.js" charset="UTF-8" defer></script>
-      <script src="./search.js" charset="UTF-8" defer></script>
-      <script src="./index.js" charset="UTF-8" defer></script>
-      <script src="./quotes.js" charset="UTF-8" defer></script>
+      <!-- Scripts mapped accurately to static/ -->
+      <script src="static/uv/uv.bundle.js" charset="UTF-8" defer></script>
+      <script src="static/uv/uv.config.js" charset="UTF-8" defer></script>
+      <script src="static/register-sw.js" charset="UTF-8" defer></script>
+      <script src="static/search.js" charset="UTF-8" defer></script>
+      <script src="static/index.js" charset="UTF-8" defer></script>
+      <script src="static/quotes.js" charset="UTF-8" defer></script>
+      
+      <script>
+        function registerServiceWorker() {
+          "use strict";
+          const stockSW = "static/uv/uv-sw.js";
+          if (!navigator.serviceWorker || location.protocol !== "https:") return;
+
+          navigator.serviceWorker.register(stockSW, {
+            scope: "/vaultv7/service/"
+          }).catch(e => {
+            console.warn("SW registration skipped:", e);
+          });
+        }
+      </script>
   </body>
 </html>
