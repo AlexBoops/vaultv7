@@ -1,32 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <!-- Base URL: Permanently anchors all relative paths & links to /vaultv7/ -->
+      <!-- Base URL locks every script and relative link to the /vaultv7/ repo folder -->
       <base href="/vaultv7/">
 
-      <!-- Force trailing slash and prevent jumping to domain root -->
+      <!-- Ensure trailing slash so GitHub Pages path resolution never strips /vaultv7/ -->
       <script>
          if (location.pathname === '/vaultv7') {
             location.replace('/vaultv7/' + location.search + location.hash);
          }
-
-         // Intercept any click pointing to root "/" and redirect to "/vaultv7/"
-         document.addEventListener('click', function(e) {
-            const anchor = e.target.closest('a');
-            if (anchor) {
-               const href = anchor.getAttribute('href');
-               if (href === '/' || href === window.location.origin + '/') {
-                  e.preventDefault();
-                  window.location.href = '/vaultv7/';
-               }
-            }
-         }, true);
       </script>
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
       
-      <!-- Relative CSS: Resolves via <base> directly to /vaultv7/index.css -->
+      <!-- Root stylesheet -->
       <link rel="stylesheet" href="index.css">
       
       <script src="https://cdn.tailwindcss.com"></script>
@@ -115,12 +103,13 @@
       <div class="text-white min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
       <div class="container text-center max-w-md relative">
          <div class="flex items-center justify-center space-x-4">
-             <!-- Hardcoded home link targeting /vaultv7/ -->
+             <!-- Vault v6.5 Logo pointing to repo home -->
              <a href="/vaultv7/" id="logo" class="text-5xl font-bold opacity-0 animate-de-entrance bg-clip-text text-transparent bg-gradient-to-r from-gray-300 to-white hover:opacity-80 transition-opacity">
                  Vault v6.5
              </a>
          </div>
 
+              <!-- Main Home Grid -->
               <div class="grid grid-cols-3 gap-2 mb-2 mt-4">
                 
                 <form id="uv-form" class="col-span-2">
@@ -194,7 +183,7 @@
     <i></i>
    </div>
   
-      <!-- Scripts: Resolving through <base href="/vaultv7/"> -->
+      <!-- Scripts: Resolving through base tag to /vaultv7/ -->
       <script src="uv/uv.bundle.js" charset="UTF-8" defer></script>
       <script src="uv/uv.config.js" charset="UTF-8" defer></script>
       <script src="register-sw.js" charset="UTF-8" defer></script>
