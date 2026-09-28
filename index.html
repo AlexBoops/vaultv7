@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <!-- Base URL locks every script and relative link to the /vaultv7/ repo folder -->
-      <base href="/vaultv7/">
-
-      <!-- Ensure trailing slash so GitHub Pages path resolution never strips /vaultv7/ -->
+      <!-- Enforce trailing slash on repository subpath -->
       <script>
          if (location.pathname === '/vaultv7') {
             location.replace('/vaultv7/' + location.search + location.hash);
@@ -14,8 +11,8 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
       
-      <!-- Root stylesheet -->
-      <link rel="stylesheet" href="index.css">
+      <!-- Hardcoded /vaultv7/ index.css -->
+      <link rel="stylesheet" href="/vaultv7/index.css">
       
       <script src="https://cdn.tailwindcss.com"></script>
       <script src="https://kit.fontawesome.com/a4d0d1241b.js" crossorigin="anonymous"></script>
@@ -24,16 +21,16 @@
 
       <title>AJH's Vault V6.5</title>
       <meta name="description" content="An educational resource for students, featuring interactive tools and web-based applications to enhance learning.">
-      <link rel="icon" href="icon.png" type="image/png">
+      <link rel="icon" href="/vaultv7/icon.png" type="image/png">
       <meta property="og:type" content="website">
       <meta property="og:title" content="AJH's Vault V6.5">
       <meta property="og:description" content="Explore a variety of student-friendly tools and resources to enrich your learning experience.">
-      <meta property="og:image" content="icon.png">
+      <meta property="og:image" content="/vaultv7/icon.png">
       <meta property="og:url" content="https://alexboops.github.io/vaultv7/">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="AJH's Vault V6.5">
       <meta name="twitter:description" content="A collection of web tools and educational applications for students.">
-      <meta name="twitter:image" content="icon.png">
+      <meta name="twitter:image" content="/vaultv7/icon.png">
       <meta property="og:site_name" content="AJH's Vault V6.5">
       <meta name="theme-color" content="#000000">
    
@@ -44,7 +41,7 @@
           "@type": "EducationalOrganization",
           "name": "AJH's Vault V6.5 - Learning Hub",
           "url": "https://alexboops.github.io/vaultv7/",
-          "logo": "icon.png",
+          "logo": "/vaultv7/icon.png",
           "description": "An interactive hub for students to access various web-based tools and applications.",
           "sameAs": [
               "https://www.instagram.com/@ajhsvault",
@@ -103,13 +100,11 @@
       <div class="text-white min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
       <div class="container text-center max-w-md relative">
          <div class="flex items-center justify-center space-x-4">
-             <!-- Vault v6.5 Logo pointing to repo home -->
              <a href="/vaultv7/" id="logo" class="text-5xl font-bold opacity-0 animate-de-entrance bg-clip-text text-transparent bg-gradient-to-r from-gray-300 to-white hover:opacity-80 transition-opacity">
                  Vault v6.5
              </a>
          </div>
 
-              <!-- Main Home Grid -->
               <div class="grid grid-cols-3 gap-2 mb-2 mt-4">
                 
                 <form id="uv-form" class="col-span-2">
@@ -123,19 +118,19 @@
                   />
                 </form>
                 
-                <a href="g/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                <a href="/vaultv7/g/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
                     <i class="fa-solid fa-gamepad"></i> Games
                 </a>
             
-                <a href="a/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                <a href="/vaultv7/a/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
                     <i class="fa-brands fa-app-store-ios"></i> Apps 
                 </a>
 
-                <a href="education/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                <a href="/vaultv7/education/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
                     <i class="fa-solid fa-school"></i> Education
                 </a>
         
-                <a href="t/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                <a href="/vaultv7/t/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
                     <i class="fa-solid fa-screwdriver-wrench"></i> Tools
                 </a>
 
@@ -143,15 +138,15 @@
                     <i class="fa-solid fa-link"></i> Link Portal
                 </a>
 
-                <a href="vm/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                <a href="/vaultv7/vm/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
                     <i class="fa-solid fa-desktop"></i> VM (beta)
                 </a>
 
-                <a href="ia/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                <a href="/vaultv7/ia/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
                     <i class="fa-solid fa-robot"></i> AI
                 </a>
 
-                <a href="c/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
+                <a href="/vaultv7/c/" class="py-2 bg-transparent border border-neutral-400/50 rounded-lg text-white hover:bg-black/50 transition-all duration-250 self-center">
                     <i class="fa-solid fa-message"></i> Chatroom
                 </a>
 
@@ -172,9 +167,9 @@
 
    <div class="fixed bottom-0 p-4 text-neutral-500">
       <a class="underline" href="https://discord.gg/RxDCZz7E5R" target="_blank" rel="noopener noreferrer">discord.gg/RxDCZz7E5R</a>
-      <a class="ml-10 underline" href="privacy-policy/">Privacy policy</a>
-      <a class="ml-10 underline" href="contact/">Contact</a>
-      <a class="ml-10 underline" href="partners/">Partners</a>
+      <a class="ml-10 underline" href="/vaultv7/privacy-policy/">Privacy policy</a>
+      <a class="ml-10 underline" href="/vaultv7/contact/">Contact</a>
+      <a class="ml-10 underline" href="/vaultv7/partners/">Partners</a>
    </div>
 
    <div id="comets">
@@ -183,17 +178,17 @@
     <i></i>
    </div>
   
-      <!-- Scripts: Resolving through base tag to /vaultv7/ -->
-      <script src="uv/uv.bundle.js" charset="UTF-8" defer></script>
-      <script src="uv/uv.config.js" charset="UTF-8" defer></script>
-      <script src="register-sw.js" charset="UTF-8" defer></script>
-      <script src="search.js" charset="UTF-8" defer></script>
-      <script src="index.js" charset="UTF-8" defer></script>
-      <script src="quotes.js" charset="UTF-8" defer></script>
+      <!-- Explicit /vaultv7/ paths for every script -->
+      <script src="/vaultv7/uv/uv.bundle.js" charset="UTF-8" defer></script>
+      <script src="/vaultv7/uv/uv.config.js" charset="UTF-8" defer></script>
+      <script src="/vaultv7/register-sw.js" charset="UTF-8" defer></script>
+      <script src="/vaultv7/search.js" charset="UTF-8" defer></script>
+      <script src="/vaultv7/index.js" charset="UTF-8" defer></script>
+      <script src="/vaultv7/quotes.js" charset="UTF-8" defer></script>
       <script>
         function registerServiceWorker() {
           "use strict";
-          const stockSW = "uv-sw.js";
+          const stockSW = "/vaultv7/uv-sw.js";
           const swAllowedHostnames = ["localhost", "127.0.0.1"];
   
           async function registerSW() {
